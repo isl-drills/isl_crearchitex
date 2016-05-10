@@ -1,0 +1,29 @@
+{#  template menu #}
+
+<div class="centrage pos">
+    <div class="logo">
+        <a href="../index.php/home">
+            {% image '@ISLCrearchitexBundle/Resources/public/images/logo/logo.png' %}
+    <img src="{{ asset_url }}" alt="Example" />
+{% endimage %}
+            
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{path('home')}}">home</a></li> 
+           
+            <li><a href="{{path('equipe')}}">equipe</a></li>
+                   
+            <li><a href="{{path('projets')}}">projets</a></li><!--
+            -->
+            <li><a href="{{path('news')}}">news</a></li><!--
+            -->
+            <li><a href="{{path('contact')}}">contact</a></li>
+            <li style="padding-top: 5px;"><a class="button button-primary" href="./index.php?p=login">admin</a></li>
+        </ul>
+        <a href="#" class="pull">MENU</a>
+    </nav>
+
+</div>
+</header
