@@ -12,6 +12,6 @@ class EquipeController extends Controller
      */
     public function equipeAction()
     {
-        return $this->render('ISLCrearchitexBundle::equipe.html.twig');
+        return $this->render('ISLCrearchitexBundle:public:equipe.html.twig');
     }
 }

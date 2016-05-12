@@ -12,6 +12,6 @@ class ContactController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('ISLCrearchitexBundle::contact.html.twig');
+        return $this->render('ISLCrearchitexBundle:public:contact.html.twig');
     }
 }

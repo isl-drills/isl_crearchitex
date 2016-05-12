@@ -12,6 +12,6 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('ISLCrearchitexBundle::index.html.twig');
+        return $this->render('ISLCrearchitexBundle:public:index.html.twig');
     }
 }

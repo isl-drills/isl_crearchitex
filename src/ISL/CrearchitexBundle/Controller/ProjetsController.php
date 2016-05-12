@@ -12,6 +12,6 @@ class ProjetsController extends Controller
      */
     public function projetsAction()
     {
-        return $this->render('ISLCrearchitexBundle::projets.html.twig');
+        return $this->render('ISLCrearchitexBundle:public:projets.html.twig');
     }
 }

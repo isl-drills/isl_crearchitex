@@ -12,6 +12,6 @@ class NewsController extends Controller
      */
     public function newsAction()
     {
-        return $this->render('ISLCrearchitexBundle::news.html.twig');
+        return $this->render('ISLCrearchitexBundle:public:news.html.twig');
     }
 }
