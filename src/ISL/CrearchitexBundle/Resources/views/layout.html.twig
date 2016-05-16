@@ -3,7 +3,26 @@
 <!DOCTYPE html>
 <html>
     {% block header %}
-        {%include 'ISLCrearchitexBundle:Base:header.html.twig' %}
+        {#  {%include 'ISLCrearchitexBundle:Base:header.html.twig' %}#}
+        <head>
+            <title>{% block title %}Crearchitex{% endblock %}</title> 
+
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <meta charset="utf-8">
+
+            {% block stylesheets %}    
+
+                {#{% stylesheets 'bundles/islcrearchitex/css/*' filter='cssrewrite' %}#}
+                {% stylesheets 'css/*' filter='cssrewrite' %}
+                <link href="{{asset_url}}" rel="stylesheet" type="text/css"/>
+                <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+                {% endstylesheets %} 
+            {% endblock %}
+
+            {#{% image 'bundles/islcrearchitex/images/*' filter='cssrewrite' %}   {% endimage %} #}
+            
+        </head>
+
     {% endblock %}
     <body>
 
