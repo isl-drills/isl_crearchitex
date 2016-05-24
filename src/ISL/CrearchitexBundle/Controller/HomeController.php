@@ -12,6 +12,11 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('ISLCrearchitexBundle:public:index.html.twig');
+        $doctrine=$this->getDoctrine()->getManager();
+        $repo=$doctrine->getRepository('ISLCrearchitexBundle:Categories');
+        $categories=$repo->findAll();
+        
+        
+        return $this->render('ISLCrearchitexBundle:public:index.html.twig',["categories"=>$categories]);
     }
 }

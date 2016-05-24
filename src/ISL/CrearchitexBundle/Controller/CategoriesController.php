@@ -43,6 +43,17 @@ class CategoriesController extends Controller
         
         $em->flush();
         
-        return $this->render('ISLCrearchitexBundle:public:index.html.twig');
+        return $this->redirectToRoute('categories_show');
+    }
+    
+    /**
+     * @Route("/categories/show", name="categories_show")
+     */
+    public function showAction(){
+        $doctrine=$this->getDoctrine()->getManager();
+        $repo=$doctrine->getRepository('ISLCrearchitexBundle:Categories');
+        $categories=$repo->findAll();
+        
+        return $this->render('ISLCrearchitexBundle:admin:categories_view.html.twig',["categories"=>$categories]);
     }
 }

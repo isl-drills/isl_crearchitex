@@ -1,0 +1,16 @@
+{% extends "ISLCrearchitexBundle::layout.html.twig" %}
+   {% block title %} Categories Liste - Crearchitex {% endblock %}
+{% block contenu %}
+
+    <h2> Liste des categories </h2>
+    
+    <ul>
+    {% for categorie in categories %}
+        <li> <h3>{{categorie.nom}}</h3>
+            <br />{{categorie.description}}</li>
+        
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+

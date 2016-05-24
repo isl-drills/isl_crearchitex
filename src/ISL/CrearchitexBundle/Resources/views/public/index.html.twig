@@ -20,21 +20,14 @@
     </div>
     <!-- 3e bloc de la section: composé de 3 div flotant + 3titres -->
     <div class="home_bloc_3 over_flow">
+        {%for categorie in categories %}
         <div class="fl hb_3">
-            <div class="hb_3_rond_1"><p>1</p></div>
-            <h2>Construction</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi faucibus ac sapien nec pellentesque. Nulla facilisi. Praesent ut urna a massa ultricies sagittis. Pellentesque feugiat justo in dapibus hendrerit.</p>
+            <div class="hb_3_rond_1"><p>{{loop.index}}</p></div>
+            <h2>{{categorie.nom}}</h2>
+            <p>{{categorie.description}}</p>
         </div>
-        <div class="fl hb_3">
-            <div class="hb_3_rond_1"><p>2</p></div>
-            <h2>Renovation</h2>
-            <p>Donec posuere nibh ligula, et iaculis odio lacinia sit amet. Mauris quis magna felis.</p>
-        </div>
-        <div class="fl hb_3">
-            <div class="hb_3_rond_1"><p>3</p></div>
-            <h2>Interieur</h2>
-            <p>Curabitur auctor hendrerit nisi in dictum. Curabitur turpis sem, vestibulum ut auctor et, aliquam eget lorem. Nam blandit quam eget sapien ornare, sit amet egestas orci ullamcorper.</p>
-        </div>
+        {% endfor %}
+       
     </div>
 
 
