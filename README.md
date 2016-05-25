@@ -50,6 +50,9 @@ Ajout de catégories:
 * Ajout de catgégorie
     - ajout de nouvelles catégorie dans le contrôleur pour verifier que la bd est alimentée.
     - Je joue avec les fixtures pour faire la même chose et 'dégager' le controleur.
+        . d'abord une classe php pour insérer les fixtures
+        . ensuite utilisation du bundle hautelook/alice-bundle. Ce bundle utilise un fichier yaml pour injecter les fixtures.  
+            Très puissant le fichier yaml est cours et simple -> plus pratique que le fihier php
     - création d'un formulaire d'ajout
 * confirmation / affichage des catéforie
 * fonction affichage (show) et intégration dans la page home.

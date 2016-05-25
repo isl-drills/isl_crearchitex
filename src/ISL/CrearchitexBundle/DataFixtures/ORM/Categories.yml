@@ -1,0 +1,9 @@
+ISL\CrearchitexBundle\Entity\Categories:
+    categories1:
+        nom: <word()>
+        description: <sentence($nbWords = 8)>
+    categories{2..3}:
+        nom: <word()>
+        description: <sentence($nbWords = 8)>
+    
+    
