@@ -3,14 +3,16 @@
 namespace ISL\CrearchitexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Categories
  *
- * @ORM\Table(name="categories")
+ * @ORM\Table(name="categorie")
  * @ORM\Entity(repositoryClass="ISL\CrearchitexBundle\Repository\CategoriesRepository")
  */
-class Categories
+class Categorie
 {
     /**
      * @var int
@@ -35,11 +37,17 @@ class Categories
      */
     private $description;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="Projet", mappedBy="categorie", cascade={"persist","remove"})
+     */
+    private $projet;
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -51,7 +59,7 @@ class Categories
      *
      * @param string $nom
      *
-     * @return Categories
+     * @return Categorie
      */
     public function setNom($nom)
     {
@@ -75,7 +83,7 @@ class Categories
      *
      * @param string $description
      *
-     * @return Categories
+     * @return Categorie
      */
     public function setDescription($description)
     {
@@ -92,5 +100,46 @@ class Categories
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projet = new ArrayCollection();
+    }
+
+    /**
+     * Add projet
+     *
+     * @param Projet $projet
+     *
+     * @return Categorie
+     */
+    public function addProjet(Projet $projet)
+    {
+        $this->projet[] = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Remove projet
+     *
+     * @param Projet $projet
+     */
+    public function removeProjet(Projet $projet)
+    {
+        $this->projet->removeElement($projet);
+    }
+
+    /**
+     * Get projet
+     *
+     * @return Collection
+     */
+    public function getProjet()
+    {
+        return $this->projet;
     }
 }

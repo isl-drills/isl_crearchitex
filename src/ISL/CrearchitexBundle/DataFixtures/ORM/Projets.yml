@@ -1,0 +1,22 @@
+ISL\CrearchitexBundle\Entity\Projet:
+    projet_1:
+        nom: <sentence($nbWords = 2)>
+        description: <sentence($nbWords = 8)>
+        image: '@image_2'
+        categorie: ['@categorie_1']
+    projet_2:
+        nom: <sentence($nbWords = 2)>
+        description: <sentence($nbWords = 8)>
+        image: '@image_1'
+        categorie: ['@categorie_2']
+    
+        
+
+
+        
+
+        
+        
+    
+    
+    

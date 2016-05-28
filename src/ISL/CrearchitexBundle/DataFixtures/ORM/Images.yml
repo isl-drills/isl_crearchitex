@@ -1,0 +1,10 @@
+ISL\CrearchitexBundle\Entity\Image:
+    image_1:
+        url: http://placekitten.com/220/220
+        alt: <sentence($nbWords = 8)>
+    image_2:
+        url: http://placekitten.com/221/220
+        alt: <sentence($nbWords = 8)>
+    
+    
+    
