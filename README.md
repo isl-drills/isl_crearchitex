@@ -56,3 +56,24 @@ Ajout de catégories:
     - création d'un formulaire d'ajout
 * confirmation / affichage des catéforie
 * fonction affichage (show) et intégration dans la page home.
+
+Realation et Fixtures.
+---------------------
+
+Ajout des relations entre 
+    - Projet et Image (One To One) 
+    - Projet et Categorie (Many To Many) 
+
+Fixtures pour remplir les tables: deux methodes
+    -  php bin/console doctrine:fixtures:load : utilise les fixtures (classiques) via classe LoadXXX
+    -   php bin/console hautelook_alice:doctrine:fixtures:load : utilise les fixtures via  hautelook_alice bundle.
+
+Utilisation de ** faker **
+
+recupération des données et Affichage dans la page home.
+-------------------------------------------------------
+
+prochaine étape
+
+
+
