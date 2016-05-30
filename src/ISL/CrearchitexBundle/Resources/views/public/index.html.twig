@@ -34,6 +34,17 @@
     <!-- 4e bloc de la section: composé de 3 div flotant + 1 titre général-->
     <!--titre : Traveaux récents-->
     <h2 class="ligne_apres"><span>Travaux récents</span></h2>
+    <div class="home_bloc_3 over_flow">
+        {%for projet in projets %}
+        <div class="fl hb_3">
+            
+            <h2>{{projet.nom}}</h2>
+            <p>{{projet.description}}</p>
+        </div>
+        {% endfor %}
+       
+    </div>
+
 
 
 {% endblock %}

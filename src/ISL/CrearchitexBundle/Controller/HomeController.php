@@ -13,10 +13,12 @@ class HomeController extends Controller
     public function indexAction()
     {
         $doctrine=$this->getDoctrine()->getManager();
-        $repo=$doctrine->getRepository('ISLCrearchitexBundle:Categories');
-        $categories=$repo->findAll();
-        
-        
-        return $this->render('ISLCrearchitexBundle:public:index.html.twig',["categories"=>$categories]);
+        $repo=$doctrine->getRepository('ISLCrearchitexBundle:Categorie');
+        $categories=$repo->findBy([],[],3);
+        $repo=$doctrine->getRepository('ISLCrearchitexBundle:Projet');
+        $projets=$repo->findBy([],[],3);
+                 
+        return $this->render('ISLCrearchitexBundle:public:index.html.twig',
+                            ["categories"=>$categories, "projets"=>$projets]);
     }
 }

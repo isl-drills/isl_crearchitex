@@ -42,12 +42,20 @@ class Projet
     private $image;
     
     /**
-     * @var string
+     * @var categorie
      *
-     * @ORM\ManyToMany(targetEntity="Categorie", inversedBy="projet", cascade={"persist","remove"})
+     * @ORM\ManyToMany(targetEntity="Categorie", inversedBy="projet")
      */
     private $categorie;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categorie = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -129,13 +137,6 @@ class Projet
     public function getImage()
     {
         return $this->image;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categorie = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

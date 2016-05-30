@@ -38,11 +38,20 @@ class Categorie
     private $description;
 
     /**
-     * @var string
+     * @var projet
      *
-     * @ORM\ManyToMany(targetEntity="Projet", mappedBy="categorie", cascade={"persist","remove"})
+     * @ORM\ManyToMany(targetEntity="Projet", mappedBy="categorie")
      */
     private $projet;
+
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projet = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -101,22 +110,15 @@ class Categorie
     {
         return $this->description;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projet = new ArrayCollection();
-    }
 
     /**
      * Add projet
      *
-     * @param Projet $projet
+     * @param \ISL\CrearchitexBundle\Entity\Projet $projet
      *
      * @return Categorie
      */
-    public function addProjet(Projet $projet)
+    public function addProjet(\ISL\CrearchitexBundle\Entity\Projet $projet)
     {
         $this->projet[] = $projet;
 
@@ -126,9 +128,9 @@ class Categorie
     /**
      * Remove projet
      *
-     * @param Projet $projet
+     * @param \ISL\CrearchitexBundle\Entity\Projet $projet
      */
-    public function removeProjet(Projet $projet)
+    public function removeProjet(\ISL\CrearchitexBundle\Entity\Projet $projet)
     {
         $this->projet->removeElement($projet);
     }
@@ -136,7 +138,7 @@ class Categorie
     /**
      * Get projet
      *
-     * @return Collection
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProjet()
     {
