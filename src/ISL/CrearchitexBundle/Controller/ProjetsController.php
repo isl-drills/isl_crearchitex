@@ -53,7 +53,15 @@ class ProjetsController extends Controller {
             $manager->flush();
             return $this->redirectToRoute("projets_liste");
         }
-        return $this->render('ISLCrearchitexBundle:admin:projets_form_modify.html.twig', ["form" => $form->createView()]);
+        $deleteForm = $this->createDeleteForms($id);
+        return $this->render('ISLCrearchitexBundle:admin:projets_form_modify.html.twig', ["form" => $form->createView(),
+            "deleteForm" => $deleteForm->createView()]);
+    }
+    
+    private function createDeleteForms($id) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('categories_delete', array("id" => $id)))
+                        ->add('delete', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class, array('label' => 'supprime'))->getForm();
     }
 
     /**
