@@ -3,9 +3,10 @@
 namespace ISL\CrearchitexBundle\Controller;
 
 use ISL\CrearchitexBundle\Entity\Projet;
-use ISL\CrearchitexBundle\Entity\Images;
+use ISL\CrearchitexBundle\Form\ProjetType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProjetsController extends Controller {
 
@@ -17,23 +18,42 @@ class ProjetsController extends Controller {
     }
 
     /**
-     * @Route("/projets/new", name="projets_new")
+     * @Route("/admin/projets/new", name="projets_new")
      */
-    public function newAction() {
-        $em = $this->getDoctrine()->getManager();
+    public function newAction(Request $request) {
 
-        $projet = new Projets;
-        $image = new Images;
-        $projet->setNom("essai");
-        $projet->setDescription("une description");
+        $projet = new projet();
+        $form = $this->createForm(ProjetType::class, $projet);
+        $form->handleRequest($request);
 
-        $image->setUrl("http://placekitten.com/220/220");
-        $projet->setImage($image);
-        $em->persist($projet);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($projet);
+            $manager->flush();
+            return $this->redirectToRoute("projets_liste");
+        }
+        return $this->render('ISLCrearchitexBundle:admin:projets_form_add.html.twig', ["form" => $form->createView()]);
+    }
 
-        $em->flush();
+    /**
+     * @Route("/admin/projets/modify/{id}", name="projets_modify")
+     */
+    public function modifyAction(Request $request, $id) {
+        $projet = new projet();
+        $manager = $this->getDoctrine()->getManager();
+        $repo = $manager->getRepository('ISLCrearchitexBundle:projet');
+        $projet = $repo->find($id);
 
-        return $this->render('ISLCrearchitexBundle:public:projets.html.twig');
+        $form = $this->createForm(ProjetType::class, $projet);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($projet);
+            $manager->flush();
+            return $this->redirectToRoute("projets_liste");
+        }
+        return $this->render('ISLCrearchitexBundle:admin:projets_form_modify.html.twig', ["form" => $form->createView()]);
     }
 
     /**
@@ -48,7 +68,7 @@ class ProjetsController extends Controller {
 
         return $this->render('ISLCrearchitexBundle:public:projets-liste.html.twig', ["projets" => $projets]);
     }
-    
+
     /**
      * @Route("/projets/{id}", name="projets_un")
      */

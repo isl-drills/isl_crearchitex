@@ -1,0 +1,12 @@
+{% extends "ISLCrearchitexBundle::layout.html.twig" %}
+   {% block title %} Projet Ajout - Crearchitex {% endblock %}
+{% block contenu %}
+
+    <h2> Ajout d'un projet </h2>
+    
+    {{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}
+
+

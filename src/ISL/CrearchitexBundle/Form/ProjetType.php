@@ -2,9 +2,11 @@
 
 namespace ISL\CrearchitexBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ProjetType extends AbstractType
 {
@@ -17,9 +19,13 @@ class ProjetType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('image')
-            ->add('categorie')
-        ;
+            ->add('image', ImageType::class)
+            ->add('categorie',  EntityType::class,[
+                "class"=>"ISLCrearchitexBundle:Categorie",
+                "choice_label"=>"nom",
+                "multiple"=>true]
+            )  
+            ->add('save', SubmitType::class, array('label' => 'envoi'));
     }
     
     /**
