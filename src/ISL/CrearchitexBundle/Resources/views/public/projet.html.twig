@@ -1,0 +1,14 @@
+{% extends "ISLCrearchitexBundle::layout.html.twig" %}
+
+{% block title %} Projets  {{projet.nom}} - Crearchitex {% endblock %}
+
+{% block contenu %}
+
+    <!-- titre de la section: 1er bloc de la section -->
+    <h1>{{projet.nom}}</h1>
+
+    {{projet.description}}
+
+{% endblock %}
+
+

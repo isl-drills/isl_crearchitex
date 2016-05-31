@@ -1,0 +1,19 @@
+{% extends "ISLCrearchitexBundle::layout.html.twig" %}
+
+{% block title %} Projets  liste - Crearchitex {% endblock %}
+
+{% block contenu %}
+
+    <!-- titre de la section: 1er bloc de la section -->
+    <h1>Différents projets</h1>
+    
+    {%for projet in projets%}
+        <a href="{{ path('projets_un', {'id': projet.id}) }}"><h3> {{projet.nom}} </h3> </a>
+        <!--link: architecture Design-->
+        
+        {{projet.description}}
+    {% endfor %}
+
+{% endblock %}
+
+
