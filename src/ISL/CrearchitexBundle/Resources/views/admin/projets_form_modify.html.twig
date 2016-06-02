@@ -1,7 +1,7 @@
 {% extends "ISLCrearchitexBundle::layout.html.twig" %}
 {% block title %} Projet Modification - Crearchitex {% endblock %}
 {% block contenu %}
-
+    {{dump(form)}}
     <h2> Modification d'un projet </h2>
 
     {{ form_start(form) }}

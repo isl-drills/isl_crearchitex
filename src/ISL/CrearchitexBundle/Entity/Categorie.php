@@ -144,4 +144,8 @@ class Categorie
     {
         return $this->projet;
     }
+    
+    public function __toString() {
+        return $this->nom;
+    }
 }

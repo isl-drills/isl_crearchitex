@@ -22,8 +22,9 @@ class ProjetType extends AbstractType
             ->add('image', ImageType::class)
             ->add('categorie',  EntityType::class,[
                 "class"=>"ISLCrearchitexBundle:Categorie",
-                "choice_label"=>"nom",
-                "multiple"=>true]
+               // "choice_label"=>"nom", // si je ne met cette ligne je dois implementer _tostring dans categorie
+                "multiple"=>true, // false affiche une liste deroulante - true affiche tous les choix
+                ]
             )  
             ->add('save', SubmitType::class, array('label' => 'envoi'));
     }

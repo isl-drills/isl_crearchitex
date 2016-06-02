@@ -2,6 +2,7 @@
 
 namespace ISL\CrearchitexBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Projets
@@ -29,8 +30,9 @@ class Projet
 
     /**
      * @var string
-     *
+     *  
      * @ORM\Column(name="description", type="string", length=255)
+     * 
      */
     private $description;
     

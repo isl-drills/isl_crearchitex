@@ -32,4 +32,8 @@ class CategorieType extends AbstractType
             'data_class' => 'ISL\CrearchitexBundle\Entity\Categorie'
         ));
     }
+    
+    public function __toString() {
+        return $this->nom;
+    }
 }
