@@ -41,20 +41,26 @@ class CategorieController extends Controller {
         $repo = $em->getRepository('ISLCrearchitexBundle:Categorie');
         $categorie = $repo->find($id);
 
+
         $form = $this->createForm(CategorieType::class, $categorie);
+        if ($categorie != null) {
+            $form->handleRequest($request);
 
-        $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                //  $em = $this->getDoctrine()->getManager();
+                $em->persist($categorie);
+                $em->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            //  $em = $this->getDoctrine()->getManager();
-            $em->persist($categorie);
-            $em->flush();
-
-            return $this->redirectToRoute("categories_show");
+                return $this->redirectToRoute("categories_show");
+            }
+            $deleteForm = $this->createDeleteForms($id);
+            return $this->render('ISLCrearchitexBundle:admin:categories_form_modify.html.twig', array("form" => $form->createView(),
+                        "deleteForm" => $deleteForm->createView()));
+        } else{
+           $this->addFlash('error', "Cette categorie n''existe pas je vous redirige vers la page ajout");
+            return $this->render('ISLCrearchitexBundle:admin:categories_form_add.html.twig', array("form" => $form->createView()));
+            
         }
-        $deleteForm = $this->createDeleteForms($id);
-        return $this->render('ISLCrearchitexBundle:admin:categories_form_modify.html.twig', array("form" => $form->createView(),
-                    "deleteForm" => $deleteForm->createView()));
     }
 
     private function createDeleteForms($id) {

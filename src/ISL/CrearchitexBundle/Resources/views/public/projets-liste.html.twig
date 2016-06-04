@@ -6,14 +6,22 @@
 
     <!-- titre de la section: 1er bloc de la section -->
     <h1>Différents projets</h1>
-    
-    {%for projet in projets%}
+
+    {%for projet in projets%} 
         <a href="{{ path('projets_un', {'id': projet.id}) }}"><h3> {{projet.nom}} </h3> </a>
         <!--link: architecture Design-->
-        
+
         {{projet.description}}
+        <br />
+        ({% for cat in projet.categorie %}
+        {{cat}} -
+    {% endfor %})
+
+
+
+
     {% endfor %}
 
-{% endblock %}
+        {% endblock %}
 
 
